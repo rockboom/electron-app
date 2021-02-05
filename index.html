@@ -7,17 +7,15 @@
 </head>
 <body>
     <h1>嵌入页面</h1>
-    <button id="btn">打开子窗口</button>
-    <div id="message"></div>
+    <button id="btn">打开文件</button>
     <script>
         const btn = document.getElementById('btn');
+        const { dialog } = require('electron').remote;
         btn.onclick = ()=>{
-            window.open('son.html');
+            dialog.showOpenDialog({
+                title: 'electron'
+            })
         }
-        const message = document.getElementById('message');
-        window.addEventListener('message',msg=>{
-            message.innerHTML = msg.data;
-        });
     </script>
 </body>
 </html>
