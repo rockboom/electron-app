@@ -1,7 +1,4 @@
-const {shell} = require('electron');
-let aHref = document.getElementById('aHref');
-aHref.onclick = function (e){
-    e.preventDefault();
-    var href = this.getAttribute('href');
-    shell.openExternal(href);
+var btn = document.getElementById('btn');
+btn.onclick = function (e){
+    window.open('https://www.electronjs.org/');
 }
