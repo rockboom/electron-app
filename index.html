@@ -6,16 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>断网提醒</h2>
-    
+    <button id="btn">通知消息</button>    
     <script>
-        //需要自己手动连接或断开网络
-        window.addEventListener('online', () => {
-            alert('网络正常，放心使用')
-        })
-        window.addEventListener('offline', () => {
-            alert('网络异常，请检查网络是否连接')
-        })
+        const btn = document.getElementById("btn");
+        const option = {
+            title:"新消息提醒",
+            body:"你有新的需要阅读"
+        }
+        btn.onclick = ()=>{
+            new window.Notification(option.title,option);
+        }
     </script>
 </body>
 </html>
