@@ -13,25 +13,14 @@
         const fs = require('fs')
         const { dialog } = require('electron').remote;
         btn.onclick = ()=>{
-            dialog.showOpenDialog({
-                title: 'electron',
-                defaultPath: 'sunny.jpg',
-                // 文件选择过滤
-                filters: [
-                    {
-                        name: 'jpg',
-                        extensions: ['jpg']
-                    }
-                ],
-                buttonLabel: '确认与否',
-                // 对话框使用的功能，允许选择文件、允许多选
-                properties: ['openFile', 'multiSelections']
+            dialog.showMessageBox({
+                type: "error",
+                title: "错误",
+                message: "这是错误警告",
+                buttons: ["确定", "忽视", "退出"],
             }).then(res => {
                 console.log(res)
-                fs.writeFileSync(res.filePath, 'hello')
-            }).catch(err => {
-                console.log(err)
-            })
+            });
         }
     </script>
 </body>
