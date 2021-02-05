@@ -9,11 +9,14 @@ app.on('ready',()=>{
         height:600,
         webPreferences:{
             nodeIntegration:true,
-            enableRemoteModule:true
+            
+            // enableRemoteModule:true
         }
     });
-    
+    console.log("main.js");
+    require('./menu');
     mainWindow.loadFile('index.html');
+    mainWindow.webContents.openDevTools();
     mainWindow.on('close',()=>{
         mainWindow = null;
     })
