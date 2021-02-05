@@ -6,18 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>嵌入页面</h1>
-    <button id="btn">打开子窗口</button>
-    <div id="message"></div>
+    <h3>son 页面</h3>
+    <button id="btn">传递message</button>
     <script>
         const btn = document.getElementById('btn');
         btn.onclick = ()=>{
-            window.open('son.html');
+            window.postMessage('son message');
         }
-        const message = document.getElementById('message');
-        window.addEventListener('message',msg=>{
-            message.innerHTML = msg.data;
-        });
     </script>
 </body>
 </html>

@@ -18,7 +18,7 @@ app.on('ready',()=>{
     console.log("main.js");
     require('./menu');
     mainWindow.loadFile('index.html');
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
     // process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'; //消除控制台上报警文字
     const viewWindow = new BrowserView();
     mainWindow.setBrowserView(viewWindow);
@@ -28,7 +28,7 @@ app.on('ready',()=>{
         width: 600,
         height: 600
     });
-    viewWindow.webContents.loadURL('https://www.baidu.com');
+    // viewWindow.webContents.loadURL('https://www.baidu.com');
     mainWindow.on('close',()=>{
         mainWindow = null;
     })
