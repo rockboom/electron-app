@@ -1,11 +1,7 @@
-const {remote} = require('electron');
-const rightTemplate = [
-    {label:"粘贴"},
-    {label:"复制"},
-]
-
-const menu = remote.Menu.buildFromTemplate(rightTemplate); 
-window.addEventListener('contextmenu',(e)=>{
+const {shell} = require('electron');
+let aHref = document.getElementById('aHref');
+aHref.onclick = function (e){
     e.preventDefault();
-    menu.popup({window:remote.getCurrentWindow()});
-},false);
+    var href = this.getAttribute('href');
+    shell.openExternal(href);
+}
