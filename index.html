@@ -10,10 +10,27 @@
     <button id="btn">打开文件</button>
     <script>
         const btn = document.getElementById('btn');
+        const fs = require('fs')
         const { dialog } = require('electron').remote;
         btn.onclick = ()=>{
             dialog.showOpenDialog({
-                title: 'electron'
+                title: 'electron',
+                defaultPath: 'sunny.jpg',
+                // 文件选择过滤
+                filters: [
+                    {
+                        name: 'jpg',
+                        extensions: ['jpg']
+                    }
+                ],
+                buttonLabel: '确认与否',
+                // 对话框使用的功能，允许选择文件、允许多选
+                properties: ['openFile', 'multiSelections']
+            }).then(res => {
+                console.log(res)
+                fs.writeFileSync(res.filePath, 'hello')
+            }).catch(err => {
+                console.log(err)
             })
         }
     </script>
