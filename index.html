@@ -6,22 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>嵌入页面</h1>
-    <button id="btn">打开文件</button>
+    <h2>断网提醒</h2>
+    
     <script>
-        const btn = document.getElementById('btn');
-        const fs = require('fs')
-        const { dialog } = require('electron').remote;
-        btn.onclick = ()=>{
-            dialog.showMessageBox({
-                type: "error",
-                title: "错误",
-                message: "这是错误警告",
-                buttons: ["确定", "忽视", "退出"],
-            }).then(res => {
-                console.log(res)
-            });
-        }
+        //需要自己手动连接或断开网络
+        window.addEventListener('online', () => {
+            alert('网络正常，放心使用')
+        })
+        window.addEventListener('offline', () => {
+            alert('网络异常，请检查网络是否连接')
+        })
     </script>
 </body>
 </html>
