@@ -1,8 +1,7 @@
 const {
     app,
     BrowserWindow,
-    BrowserViews,
-    BrowserView
+    globalShortcut
 } = require('electron');
 let mainWindow = null;
 app.on('ready',()=>{
@@ -12,23 +11,16 @@ app.on('ready',()=>{
         webPreferences:{
             nodeIntegration:true,
             
-            // enableRemoteModule:true
+            enableRemoteModule:true
         }
     });
-    console.log("main.js");
-    require('./menu');
+    globalShortcut.register('cmd+y', () => {
+        mainWindow.loadURL('https://www.baidu.com')
+    })
+    globalShortcut.register('cmd+z', () => {
+        mainWindow.loadFile('./index.html')
+    })
     mainWindow.loadFile('index.html');
-    mainWindow.webContents.openDevTools();
-    // process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'; //消除控制台上报警文字
-    const viewWindow = new BrowserView();
-    mainWindow.setBrowserView(viewWindow);
-    viewWindow.setBounds({
-        x: 0,
-        y: 150,
-        width: 600,
-        height: 600
-    });
-    // viewWindow.webContents.loadURL('https://www.baidu.com');
     mainWindow.on('close',()=>{
         mainWindow = null;
     })
